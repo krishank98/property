@@ -24,7 +24,7 @@ stages {
         script {
           def sonarqubeScannerHome = tool name: 'sonar', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
           withCredentials([string(credentialsId: 'sonar', variable: 'sonarLogin')]) {
-            sh "${sonarqubeScannerHome}/bin/sonar-scanner -e -Dsonar.host.url=http://sonarqube-sonarqube.sonarqube.svc.cluster.local:9000 -Dsonar.login=${sonarLogin} -Dsonar.projectName=property-brad -Dsonar.projectVersion=${env.BUILD_NUMBER} -Dsonar.projectKey=PB -Dsonar.sources=django-brad/ -Dsonar.tests=test/ -Dsonar.language=python"
+            sh "${sonarqubeScannerHome}/bin/sonar-scanner -e -Dsonar.host.url=http://sonarqube-sonarqube.sonarqube.svc.cluster.local:9000 -Dsonar.login=${sonarLogin} -Dsonar.projectName=property-brad -Dsonar.projectVersion=${env.BUILD_NUMBER} -Dsonar.projectKey=PB -Dsonar.sources=django_brad/ -Dsonar.tests=test/ -Dsonar.language=python"
           }  
         }
       }
