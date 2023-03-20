@@ -31,8 +31,7 @@ stages {
     stage ('Podman Build & Push') {
       steps {
         sh "echo 192.168.122.15 harbor.example.com >> /etc/hosts"
-        sh "sleep 9999"
-        sh "podman build -t harbor.example.com/mantislogic/django-brad:$GIT_COMMIT ."
+        sh "podman build --network=host -t harbor.example.com/mantislogic/django-brad:$GIT_COMMIT ."
         sh "podman login --tls-verify=false harbor.example.com -u admin -p $DOCKERHUB_PASS"
         sh "podman push --tls-verify=false harbor.example.com/mantislogic/django-brad:$GIT_COMMIT"
       }
