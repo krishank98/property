@@ -14,6 +14,7 @@ stages {
        }
     }
     stage('Test') {
+      agent { docker { image 'python:3.10.7-alpine' } }
       steps {
         sh 'echo "unit tests to do"; sleep 3'
         sh 'python -m unittest -v test/unit-test.py'
