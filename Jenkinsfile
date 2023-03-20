@@ -15,7 +15,8 @@ stages {
     }
     stage('Test') {
       steps {
-        sh 'echo "unit tests to do"; sleep 10'
+        sh 'echo "unit tests to do"; sleep 3'
+        sh 'python -m unittest -v test/unit-test.py'
       }
     }
     stage('Sonar-Scanner') {
