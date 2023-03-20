@@ -52,7 +52,7 @@ spec:
                 secretKeyRef:
                   key: secret-key
                   name: emlak-secret
-          image: harbor.example.com/mantislogic/django-brad:v2
+          image: harbor.example.com/mantislogic/django-brad:{{GIT_COMMIT}}
           livenessProbe:
             failureThreshold: 1
             httpGet:
