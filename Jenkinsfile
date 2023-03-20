@@ -14,10 +14,10 @@ stages {
        }
     }
     stage('Test') {
-      agent { none { image 'python:3.10.7-alpine' } }
       steps {
         sh 'echo "unit tests to do"; sleep 3'
-        sh 'python -m unittest -v test/unit-test.py'
+        sh 'apk add --update --no-cache python3 && ln -sf python3 /usr/bin/python'
+        sh 'python3 -m unittest -v test/unit-test.py'
       }
     }
     stage('Sonar-Scanner') {
