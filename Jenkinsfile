@@ -16,6 +16,7 @@ stages {
     stage('Test') {
       steps {
         sh 'echo "unit tests to do"; sleep 10'
+        sh 'sleep 1000'
       }
     }
     stage('Sonar-Scanner') {
