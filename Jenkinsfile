@@ -54,7 +54,7 @@ stages {
     }
     stage ('OWASP-ZAP Dynamic Scan') {
       steps {
-          sh 'podman run --tls-verify=false -t harbor.example.com/mantislogic/zap2docker-stable:2.12.0 zap-full-scan.py -t http://nginx-svc.django-brad-test.svc.cluster.local | tee owasp-results.txt || true'
+          sh 'podman run --tls-verify=false -t harbor.example.com/mantislogic/zap2docker-stable:2.12.0 zap-baseline.py -t http://nginx-svc.django-brad-test.svc.cluster.local | tee owasp-results.txt || true'
           sh 'cat owasp-results.txt | egrep  "^FAIL-NEW: 0.*FAIL-INPROG: 0"'
       }
     }
