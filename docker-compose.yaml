@@ -1,0 +1,69 @@
+version: '3'
+
+services:
+    btreweb1:
+        build: .
+        container_name: djangobrad1
+        command: gunicorn btre.wsgi:application --bind 0.0.0.0:8000
+        volumes:
+            - static_volume:/django_brad/static
+        #command: python3.7 ./manage.py runserver 0.0.0.0:8000
+        #        volumes:
+        #    - .:/Learning_Log
+        ports:
+            - 8000:8000
+        depends_on:
+            - db
+    
+    btreweb2:
+        build: .
+        container_name: djangobrad2
+        command: gunicorn btre.wsgi:application --bind 0.0.0.0:8000
+        volumes:
+            - static_volume:/django_brad/static
+        #command: python3.7 ./manage.py runserver 0.0.0.0:8000
+        #        volumes:
+        #    - .:/Learning_Log
+        ports:
+            - 8001:8000
+        depends_on:
+            - db
+
+    btreweb3:
+        build: .
+        container_name: djangobrad3
+        #command: python3.7 ./manage.py runserver 0.0.0.0:8000
+        command: gunicorn btre.wsgi:application --bind 0.0.0.0:8000
+        volumes:
+            - static_volume:/django_brad/static
+        #        volumes:
+        #    - .:/Learning_Log
+        ports:
+            - 8002:8000
+        depends_on:
+            - db
+    db:
+        image: "postgres"
+        environment:
+            - POSTGRES_DB=btredb
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=Denizli2018..
+        volumes:
+            - db-data:/var/lib/postgresql/data/
+            
+    nginx:
+        build: ./nginx
+        tty: true
+        links:
+            - btreweb1
+            - btreweb2
+            - btreweb3
+        volumes:
+            - ./django_brad:/django_brad
+        ports:
+            - 80:80
+
+
+volumes:
+    db-data:
+    static_volume:
