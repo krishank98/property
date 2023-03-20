@@ -17,6 +17,7 @@ stages {
       steps {
         sh 'echo "unit tests to do"; sleep 3'
         sh 'apk add --update --no-cache python3 && ln -sf python3 /usr/bin/python'
+        sh 'sleep 9999'
         sh 'python3 -m unittest -v test/unit-test.py'
       }
     }
