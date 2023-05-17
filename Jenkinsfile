@@ -10,7 +10,7 @@ stages {
         git url: 'https://github.com/EmrhT/property.git'
       }
     }
-    stage('Test') {
+    stage('Unit Test') {
       steps {
         sh 'echo "unit tests to do"; sleep 3'
         sh 'apk add --update --no-cache python3 && ln -sf python3 /usr/bin/python'
