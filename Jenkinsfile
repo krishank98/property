@@ -5,13 +5,10 @@ pipeline {
     }
   }
 stages {
-   stage('Preparation') {
-     steps {
-       script {
-         checkout scm
-         sh "export GIT_COMMIT=`cat .git/HEAD`"
-         }
-       }
+    stage('Preparation') {
+      steps {
+        git url: 'https://github.com/EmrhT/property.git'
+      }
     }
     stage('Test') {
       steps {
