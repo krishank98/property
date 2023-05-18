@@ -10,6 +10,11 @@ stages {
         git url: 'https://github.com/EmrhT/property.git'
       }
     }
+    stage('Developer Committed') {
+      steps {
+        sh 'true'
+      }
+    }
     stage('Unit Test') {
       steps {
         sh 'echo "unit tests to do"; sleep 3'
