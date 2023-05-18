@@ -5,7 +5,7 @@ pipeline {
     }
   }
 stages {
-    stage('Preparation') {
+    stage('Developer Cloned the Repo') {
       steps {
         git url: 'https://github.com/EmrhT/property.git'
       }
