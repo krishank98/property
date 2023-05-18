@@ -62,6 +62,11 @@ stages {
           sh 'cat owasp-results.txt | egrep  "^FAIL-NEW: 0.*FAIL-INPROG: 0"'
       }
     }
+    stage ('Merge Feature Branch to Master') {
+      steps {
+        sh 'true'
+      }
+    }
     stage ('Deploy to K8S Prod Namespace') {
       steps {
         withCredentials([file(credentialsId: 'afa1a7c1-5e6c-4d9b-82cb-4293f5c144a3', variable: 'KUBECRED')]) {
