@@ -1,4 +1,4 @@
-# Property
+# Property.
 A sample property offering web site developed with Django by Brad Traversy.
 He has a full course on it here --> https://www.udemy.com/course/python-django-dev-to-deployment/
 
